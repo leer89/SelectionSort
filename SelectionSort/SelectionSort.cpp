@@ -1,11 +1,40 @@
 // SelectionSort.cpp : Defines the entry point for the console application.
-//
 
 #include "stdafx.h"
 
+void fill_array(int a[], int size, int&numberUsed);
+// Precondition: size is the declared size of the array a.
+// Postcondition: number_used is the number of values stored in a.
+// a[0] through a[number_used - 1] have been filled with
+// non negative integers read from the keyboard.
+
+void sort(int a[], int number_used);
+// Precondition: number_used <= declared size of the array a.
+// The array elemenets a[0] through a[number_used - 1] have values.
+// Postcondition: The values of a[0] through a[number_used - 1] have
+// been rearragned so that a[0] <= a[1] ... <= a[number_used - 1].
+
+void swap_values(int&v1, int&v2);
+// Interchanges the values of v1 and v2
+
+int index_of_smallest(const int a[], int start_index, int number_used);
+// Precondition: 0 <= start_index < number_used. Referenced array elements
+// have values.
+// Returns the index i such that a[i] is the smallest of the values
+// a[start_index], a[start_index + 1], ..., a[number_used - 1].
 
 int main()
 {
-    return 0;
-}
+	using namespace std;
+	cout << "This program sorts numbers from lowest to highest using Selection Sort.\n";
 
+	int sample_array[10], number_used;
+	fill_array(sample_array, 10, number_used);
+	sort(sample_array, number_used);
+
+	cout << "In sorted order the numbers are:\n";
+	for (int index = 0; index < number_used; index++)
+	cout << sample_array[index] << " " << endl;
+
+	return 0;
+}
